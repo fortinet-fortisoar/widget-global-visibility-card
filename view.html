@@ -19,7 +19,7 @@
 
             <div class="global-card display-inline-block" ng-repeat="item in widgetData" data-ng-click="runCommand(widgetData[$index].title)">
                 <span style="color: #18C0CB; font-size: 24px;">{{ item.title }}</span>
-                <div class="random2" style="height: 1px;"></div>
+                <div class="blue-line" style="height: 1px;"></div>
                 <div id="nodeStatus-{{$index}}" class="display-flex-space-between padding-sm padding-top-30">
                     <span   style="color: #C3C5C9; font-size: 13px">Node Status </span>
                     <span   style="color: #C3C5C9; font-size: 13px"><span style="color: green;">● </span> {{ item.node_status }}</span>

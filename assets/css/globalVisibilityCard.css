@@ -19,7 +19,7 @@
 .card-text{
   font-size: 12px;
 }
-.random2{
+.blue-line{
   /* Vector 41 */
   
   width: 225px;
@@ -30,11 +30,3 @@
   
   }
   
-  .random{
-  width: 225px;
-  height: 2px;
-  left: 745px;
-  top: 561.21px;
-  
-  background: linear-gradient(180deg, rgba(24, 192, 203, 0.3) 21.47%, rgba(12, 21, 28, 0) 99.98%, rgba(13, 41, 48, 0.288) 100%);
-  }
