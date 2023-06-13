@@ -1,0 +1,80 @@
+<!-- Copyright start
+  Copyright (C) 2008 - 2023 Fortinet Inc.
+  All rights reserved.
+  FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
+  Copyright end -->
+<form data-ng-submit="save()" class="noMargin" name="editGlobalVisibility" data-ng-class="{'state-wait': processing }"
+    novalidate>
+    <div class="modal-header">
+        <h3 class="modal-title col-md-9">Global Visibility Edit View</h3>
+        <button type="button" class="close" data-ng-click="cancel()" data-dismiss="modal" aria-label="Close"
+            id="close-edit-widget-form-btn">
+            <div aria-hidden="true" class="version-button">+</div>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group"
+            data-ng-class="{ 'has-error': editGlobalVisibility.title.$invalid && editGlobalVisibility.title.$touched }">
+            <label for="title" class="control-label">Title<span class="text-danger">*</span></label> <input id="title"
+                name="title" type="text" data-ng-model="config.title" class="form-control" />
+            <div data-cs-messages="editGlobalVisibility.title"></div>
+        </div>
+        <div>
+            <div class="form-group" data-ng-if="jsonObjModuleList"
+                data-ng-class="{ 'has-error': editGlobalVisibility.customModule.$invalid && editGlobalVisibility.customModule.$touched }">
+                <label for="customModule" class="control-label">Data Source
+                    <span class="text-danger">*</span>
+                </label>
+                <span data-uib-tooltip="Select the Module which has JSON data" data-tooltip-append-to-body="true"><i
+                        class="icon icon-information font-Size-13"></i></span>
+                <select name="customModule" id="customModule" class="form-control"
+                    data-ng-options="module.type as module.name for module in jsonObjModuleList"
+                    data-ng-model="config.customModule"
+                    data-ng-change="loadAttributesForCustomModule(config.customModule)" required>
+                    <option value="">Select an Option</option>
+                </select>
+            </div>
+            <div class="form-group" data-ng-if="objectFields.length > 0">
+                <div class="margin-top-md margin-bottom-md">
+                    <label class="control-label">Filter Record Which Contains The JSON Data
+                        <span class="text-danger">*</span>
+                    </label>
+                    <span
+                        data-uib-tooltip="It is recommended to apply filter, that filters out 1 record, i.e. by a unique field"
+                        data-tooltip-append-to-body="true"><i class="icon icon-information font-Size-13"></i></span>
+                    <div data-cs-conditional data-ng-if="fieldsArray.length > 0" data-fields="$parent.fields"
+                        data-reset-field="$parent.fields" data-mode="'queryFilters'"
+                        data-ng-model="$parent.config.query" data-parent-form="editGlobalVisibility"
+                        data-enable-expression="(page==='dashboard' || page==='reporting')" data-show-uuid="true"
+                        data-form-name="'editGlobalVisibility'">
+                    </div>
+                </div>
+
+                <div id="customModuleField"
+                    data-ng-class="{ 'has-error': editGlobalVisibility.customModuleField.$invalid && editGlobalVisibility.customModuleField.$touched }">
+                    <label class="control-label">Select Field
+                        <span class="text-danger">*</span>
+                    </label>
+                    <span
+                        data-uib-tooltip="Select the Field which has the data, only json type fields will be available in the dropdown"
+                        data-tooltip-append-to-body="true"><i class="icon icon-information font-Size-13"></i></span>
+                    <select class="form-control" name="customModuleField" id="customModuleField"
+                        data-ng-options="field.name as field.title for field in objectFields"
+                        data-ng-model="config.customModuleField" required>
+                        <option value="">Select an Option</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="alert-danger alert margin-bottom-xlg margin-top-md" data-ng-if="objectFields.length == 0">
+                <span>Select a module wich contains JSON field</span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button id="edit-widget-save" type="submit" class="btn btn-sm btn-primary"><i
+                class="icon icon-check margin-right-sm"></i>Save</button>
+        <button id="edit-widget-cancel" type="button" class="btn btn-sm btn-default" data-ng-click="cancel()"><i
+                class="icon icon-close margin-right-sm"></i>Close</button>
+    </div>
+</form>
