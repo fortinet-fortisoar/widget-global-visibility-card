@@ -15,15 +15,15 @@
         $scope.cancel = cancel;
         $scope.save = save;
         $scope.config = config;
-
+        $scope.config.eventName = $scope.config.eventName ? $scope.config.eventName : "";
+        $scope.config.broadcastEvent = $scope.config.broadcastEvent ? $scope.config.broadcastEvent : false;
         $scope.loadAttributesForCustomModule = loadAttributesForCustomModule;
-        $scope.jsonObjModuleList=[];
+        $scope.jsonObjModuleList = [];
 
         init();
         function init() {
             appModulesService.load(true).then(function (modules) {
                 $scope.modules = modules;
-
                 //Create a list of modules with atleast one JSON field
                 modules.forEach((module, index) => {
                     var moduleMetaData = modelMetadatasService.getMetadataByModuleType(module.type);
@@ -66,7 +66,7 @@
                 $scope.editGlobalVisibility.$setTouched();
                 $scope.editGlobalVisibility.$focusOnFirstError();
                 return;
-              }
+            }
             $uibModalInstance.close($scope.config);
         }
 

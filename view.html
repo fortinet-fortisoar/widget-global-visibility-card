@@ -16,45 +16,18 @@
         </div>
     </div>
     <div data-ng-hide="collapsed">
-
-            <div class="global-card display-inline-block" ng-repeat="item in widgetData" data-ng-click="runCommand(widgetData[$index].title)">
-                <span style="color: #18C0CB; font-size: 24px;">{{ item.title }}</span>
-                <div class="blue-line" style="height: 1px;"></div>
-                <div id="nodeStatus-{{$index}}" class="display-flex-space-between padding-sm padding-top-30">
-                    <span   style="color: #C3C5C9; font-size: 13px">Node Status </span>
-                    <span   style="color: #C3C5C9; font-size: 13px"><span style="color: green;">● </span> {{ item.node_status }}</span>
-                </div>
-                <div id="incident_count-{{$index}}" class="display-flex-space-between padding-sm">
-                    <span   style="color: #C3C5C9; font-size: 13px">Active Incident Count </span>
-                    <span   style="color: #C3C5C9; font-size: 13px">{{ item.incident_count }}</span>
-                </div>
-                <div id="MTTD-{{$index}}" class="display-flex-space-between padding-sm">
-                    <span   style="color: #C3C5C9; font-size: 13px">MTTD</span>
-                    <span   style="color: #C3C5C9; font-size: 13px">{{ item.mttd }}</span>
-                </div>
-                <div id="mttr-{{$index}}" class="display-flex-space-between padding-sm">
-                    <span   style="color: #C3C5C9; font-size: 13px">MTTR</span>
-                    <span   style="color: #C3C5C9; font-size: 13px">{{ item.mttr }}</span>
-                </div>
-                <br>
-                <div id="totalCustomer-{{$index}}" >
-                    <span class="display-block" style="color: #C3C5C9; font-size: 18px">Total Customers </span>
-                    <div class="display-flex-space-between">
-                        <div class="display-inline-block">
-                            <span class="display-block" style="color: #3DAFC8;font-size: 14px;"> Platinum </span>
-                            <span style="color: #C3C5C9; font-size: 18px" > {{item.total_customers.platinum}}</span>
-                        </div>
-                        <div class="display-inline-block">
-                            <span class="display-block" style="color: #3DAFC8;font-size: 14px;"> Diamond </span>
-                            <span style="color: #C3C5C9; font-size: 18px" > {{item.total_customers.diamond}}</span>
-                        </div>
-                        <div class="display-inline-block">
-                            <span class="display-block" style="color: #3DAFC8;font-size: 14px;"> Gold </span>
-                            <span style="color: #C3C5C9; font-size: 18px" > {{item.total_customers.gold}}</span>
-                        </div>
+        <div id="globalCard-{{$index}}" class="global-card-dark display-inline-block" ng-repeat="item in widgetData"
+            data-ng-click="runCommand(widgetData[$index]['@id'], $index)">
+            <span style="color: #18C0CB; font-size: 24px;">{{ item.title }}</span>
+            <div class="blue-line " style="height: 1px;"></div>
+            <div ng-repeat="(key, value) in item.data">
+                <div id=" node-details"" class=" node-details-style-dark" style="font-size: 13px">
+                    <div id="nodeStatus-{{key}}-{{$parent.$index}}" class="display-flex-space-between padding-sm">
+                        <div>{{key}}</div>
+                        <div>{{value}}</div>
                     </div>
                 </div>
             </div>
-
+        </div>
     </div>
 </div>
