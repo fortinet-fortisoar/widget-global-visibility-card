@@ -19,7 +19,7 @@ If the broadcast event is turned on, the widget will then broadcast an event pas
 
     In the field, "Enter the key of object to be rendered" contains the main key of the object "recordSummaryCard", if there is no key for the object leave the field blank.
 
-    ``` JSON
+``` JSON
     "recordSummaryCard": {
       "data": {
         "MTTD": "1 min",
@@ -30,7 +30,7 @@ If the broadcast event is turned on, the widget will then broadcast an event pas
       },
       "title": "Australia"
     }
-    ```
+```
 
     JSON Object which contains the data to be rendered:
 
