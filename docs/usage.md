@@ -30,7 +30,6 @@ If the broadcast event is turned on, the widget will then broadcast an event pas
       },
       "title": "Australia"
     }
-
     ```
 
     JSON Object which contains the data to be rendered:
