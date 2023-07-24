@@ -7,11 +7,11 @@
 (function () {
     angular
         .module('cybersponse')
-        .controller('editGlobalVisibilityCard101Ctrl', editGlobalVisibilityCard101Ctrl);
+        .controller('editRecordSummaryCard100Ctrl', editRecordSummaryCard100Ctrl);
 
-    editGlobalVisibilityCard101Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', 'appModulesService', 'Entity', 'modelMetadatasService'];
+    editRecordSummaryCard100Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', 'appModulesService', 'Entity', 'modelMetadatasService'];
 
-    function editGlobalVisibilityCard101Ctrl($scope, $uibModalInstance, config, appModulesService, Entity, modelMetadatasService) {
+    function editRecordSummaryCard100Ctrl($scope, $uibModalInstance, config, appModulesService, Entity, modelMetadatasService) {
         $scope.cancel = cancel;
         $scope.save = save;
         $scope.config = config;
@@ -19,6 +19,7 @@
         $scope.config.broadcastEvent = $scope.config.broadcastEvent ? $scope.config.broadcastEvent : false;
         $scope.loadAttributesForCustomModule = loadAttributesForCustomModule;
         $scope.jsonObjModuleList = [];
+        $scope.toggleArrow = toggleArrow;
 
         init();
         function init() {
@@ -40,6 +41,11 @@
         if ($scope.config.customModule) {
             $scope.loadAttributesForCustomModule();
         }
+
+        function toggleArrow(){
+            $scope.toggle = $scope.toggle === undefined ? true : !$scope.toggle;
+        }
+
         function loadAttributesForCustomModule() {
             $scope.fields = [];
             $scope.fieldsArray = [];
@@ -62,9 +68,9 @@
         }
 
         function save() {
-            if ($scope.editGlobalVisibility.$invalid) {
-                $scope.editGlobalVisibility.$setTouched();
-                $scope.editGlobalVisibility.$focusOnFirstError();
+            if ($scope.editRecordSummaryCard.$invalid) {
+                $scope.editRecordSummaryCard.$setTouched();
+                $scope.editRecordSummaryCard.$focusOnFirstError();
                 return;
             }
             $uibModalInstance.close($scope.config);

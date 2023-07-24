@@ -3,10 +3,10 @@
   All rights reserved.
   FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
   Copyright end -->
-<form data-ng-submit="save()" class="noMargin" name="editGlobalVisibility" data-ng-class="{'state-wait': processing }"
+<form data-ng-submit="save()" class="noMargin" name="editRecordSummaryCard" data-ng-class="{'state-wait': processing }"
     novalidate>
     <div class="modal-header">
-        <h3 class="modal-title col-md-9">Global Visibility Edit View</h3>
+        <h3 class="modal-title col-md-9">Record Summary Card Edit View</h3>
         <button type="button" class="close" data-ng-click="cancel()" data-dismiss="modal" aria-label="Close"
             id="close-edit-widget-form-btn">
             <div aria-hidden="true" class="version-button">+</div>
@@ -14,14 +14,14 @@
     </div>
     <div class="modal-body">
         <div class="form-group"
-            data-ng-class="{ 'has-error': editGlobalVisibility.title.$invalid && editGlobalVisibility.title.$touched }">
+            data-ng-class="{ 'has-error': editRecordSummaryCard.title.$invalid && editRecordSummaryCard.title.$touched }">
             <label for="title" class="control-label">Title<span class="text-danger">*</span></label> <input id="title"
                 name="title" type="text" data-ng-model="config.title" class="form-control" />
-            <div data-cs-messages="editGlobalVisibility.title"></div>
+            <div data-cs-messages="editRecordSummaryCard.title"></div>
         </div>
         <div>
             <div class="form-group" data-ng-if="jsonObjModuleList"
-                data-ng-class="{ 'has-error': editGlobalVisibility.customModule.$invalid && editGlobalVisibility.customModule.$touched }">
+                data-ng-class="{ 'has-error': editRecordSummaryCard.customModule.$invalid && editRecordSummaryCard.customModule.$touched }">
                 <label for="customModule" class="control-label">Data Source
                     <span class="text-danger">*</span>
                 </label>
@@ -38,7 +38,7 @@
 
 
                 <div id="customModuleField"
-                    data-ng-class="{ 'has-error': editGlobalVisibility.customModuleField.$invalid && editGlobalVisibility.customModuleField.$touched }">
+                    data-ng-class="{ 'has-error': editRecordSummaryCard.customModuleField.$invalid && editRecordSummaryCard.customModuleField.$touched }">
                     <label class="control-label">Select Field
                         <span class="text-danger">*</span>
                     </label>
@@ -60,9 +60,9 @@
                         data-tooltip-append-to-body="true"><i class="icon icon-information font-Size-13"></i></span>
                     <div data-cs-conditional data-ng-if="fieldsArray.length > 0" data-fields="$parent.fields"
                         data-reset-field="$parent.fields" data-mode="'queryFilters'"
-                        data-ng-model="$parent.config.query" data-parent-form="editGlobalVisibility"
+                        data-ng-model="$parent.config.query" data-parent-form="editRecordSummaryCard"
                         data-enable-expression="(page==='dashboard' || page==='reporting')" data-show-uuid="true"
-                        data-form-name="'editGlobalVisibility'">
+                        data-form-name="'editRecordSummaryCard'">
                     </div>
                 </div>
 
@@ -73,27 +73,49 @@
                 <input name="customModuleValue" id="customModuleValue" type="text"
                     data-ng-model="config.keyForCustomModule" class="form-control" />
             </div>
-
-            <div>
-                <span class="checkbox display-inline line-height-15">
-                    <label for="broadcastEvent">
-                        <input id="broadcastEvent" type="checkbox" name="broadcastEvent"
-                            data-ng-model="config.broadcastEvent">&nbsp;Broadcast Event
-                    </label>
-                    <span data-uib-tooltip="Enter name of event to broadcast, the listner widgets configured withe samilar event name will start listning to this widget." data-tooltip-append-to-body="true"><i
-                        class="icon icon-information font-Size-13"></i></span>
-                </span>
-                <div data-ng-if="config.broadcastEvent">
-                    <div class="form-group"
-                        data-ng-class="{ 'has-error': editGlobalVisibility.eventName.$invalid && editGlobalVisibility.eventName.$touched }">
-                        <label for="eventName" class="control-label">Event Name<span
-                                class="text-danger">*</span></label> <input id="eventName" name="eventName" type="text"
-                            data-ng-model="config.eventName" class="form-control" />
-                        <div data-cs-messages="editGlobalVisibility.eventName"></div>
+            <uib-accordion>
+                <div uib-accordion-group class="queue-card-wrapper panel-default padding-top-lg">
+                    <uib-accordion-heading>
+                        <div class="queue-card-header padding-left-md workspace-connector-metadata-container"
+                            ng-click="toggleArrow()" data-ng-class="{'queue-text-active-color': toggle">
+                            <div class="margin-right-lg pull-left"><span class="queue-card-actions">&nbsp;<i
+                                        class="fa {{ toggle ? 'fa-chevron-down' : 'fa-chevron-right'}}"></i></span>
+                            </div>
+                            <div class="pull-left queue-card-header-text margin-right-3">Advanced Settings
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </uib-accordion-heading>
+                    <div
+                        class="padding-bottom-md padding-left-lg padding-right-lg ">
+                        <label for="broadcastEvent"
+                            class="font-size-12 mp-solutionpack-contents-card margin-top-md margin-right-md">Broadcast
+                            Event</label>
+                        <span
+                            data-uib-tooltip="Enable to broadcast an event, after enabling specify the event name foe the listener widget."
+                            data-tooltip-append-to-body="true"><i class="icon icon-information font-size-12"></i></span>
+                        <label class="switch switch-pill switch-label switch-success padding-top-md">
+                            <input type="checkbox" class="switch-input" name="IncludeAll" id="IncludeAll"
+                                data-ng-model="config.broadcastEvent">
+                            <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
+                        </label>
+                        <div data-ng-if="config.broadcastEvent">
+                            <div class="form-group"
+                                data-ng-class="{ 'has-error': editRecordSummaryCard.eventName.$invalid && editRecordSummaryCard.eventName.$touched }">
+                                <label for="eventName" class="control-label">Event Name<span
+                                        class="text-danger">*</span></label>
+                                <span
+                                    data-uib-tooltip="Enter name of event to broadcast, the listner widgets configured withe samilar event name will start listning to this widget."
+                                    data-tooltip-append-to-body="true"><i
+                                        class="icon icon-information font-Size-13"></i></span>
+                                <input id="eventName" name="eventName" type="text" data-ng-model="config.eventName"
+                                    class="form-control" />
+                                <div data-cs-messages="editRecordSummaryCard.eventName"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
+            </uib-accordion>
         </div>
     </div>
     <div class="modal-footer">

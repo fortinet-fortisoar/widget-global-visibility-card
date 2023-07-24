@@ -10,12 +10,14 @@
   background: #041826;
   background-image: linear-gradient(to bottom left, #081730, #042438);
   transition: 0.3s;
+  border-style: solid;
+  border-width: 1px;
+  border-image: linear-gradient(307deg, #0CD9E7, rgb(255 255 255 / 0%), #2C34F8) 1;
 }
 
 .card-active{
-  border:  1px solid #4EDCE6;
+  border:  2px solid #4EDCE6;
   transform: scale(1.05);
-
 }
 
 .global-card-light{
@@ -27,6 +29,7 @@
   background: #f6f8ff;
   background-image: linear-gradient(to bottom left, #edf9ff, #f8f3ff);
   transition: 0.3s;
+  border-image: linear-gradient(307deg, #0CD9E7, rgb(255 255 255 / 0%), #2C34F8) 1;
 }
 
 

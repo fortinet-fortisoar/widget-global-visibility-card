@@ -7,11 +7,11 @@
 (function () {
   angular
     .module('cybersponse')
-    .controller('globalVisibilityCard101Ctrl', globalVisibilityCard101Ctrl);
+    .controller('recordSummaryCard100Ctrl', recordSummaryCard100Ctrl);
 
-  globalVisibilityCard101Ctrl.$inject = ['$scope', '$rootScope', 'PagedCollection'];
+  recordSummaryCard100Ctrl.$inject = ['$scope', '$rootScope', 'PagedCollection'];
 
-  function globalVisibilityCard101Ctrl($scope, $rootScope, PagedCollection) {
+  function recordSummaryCard100Ctrl($scope, $rootScope, PagedCollection) {
     $scope.runCommand = runCommand;
     $scope.widgetData = [];
     var _config = $scope.config;
@@ -28,7 +28,6 @@
         for (var i = 0; i < backgroundColourElements.length; i++) {
           backgroundColourElements[i].setAttribute('class', 'global-card-light display-inline-block');
         }
-        // backgroundColourElement[0].setAttribute('class', 'global-card-light display-inline-block');
       }
       fetchJsonData();
     }
@@ -46,19 +45,21 @@
         for (let i = 0; i < pagedTotalData.fieldRows.length; i++) {
           //checking if custom module field is given 
           var data = pagedTotalData.fieldRows[i][_config.customModuleField].value;
-          if (_config.keyForCustomModule) {
-            var nestedKeysArray = _config.keyForCustomModule.split('.');
-            nestedKeysArray.forEach(function (value) {
-              data = data[value];
-            })
-          }
-          if (data != undefined && data.hasOwnProperty('data')) {
-            data['@id'] = pagedTotalData.fieldRows[i]['@id'].value;
-            $scope.widgetData.push(data);
-          }
-          else {
-            $scope.filterValidation = true;
-            return;
+          if (data) {
+            if (_config.keyForCustomModule) {
+              var nestedKeysArray = _config.keyForCustomModule.split('.');
+              nestedKeysArray.forEach(function (value) {
+                data = data[value];
+              })
+            }
+            if (data != undefined && data.hasOwnProperty('data')) {
+              data['@id'] = pagedTotalData.fieldRows[i]['@id'].value;
+              $scope.widgetData.push(data);
+            }
+            else {
+              $scope.filterValidation = true;
+              return;
+            }
           }
         }
 
@@ -76,7 +77,7 @@
         }
       }
       if (_config.broadcastEvent) {
-        $rootScope.$broadcast(_config.eventName, value);
+        $rootScope.$broadcast("widget:" + _config.eventName, value);
       }
     }
   }

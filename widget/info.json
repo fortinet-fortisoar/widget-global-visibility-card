@@ -1,8 +1,8 @@
 {
-    "name": "globalVisibilityCard",
-    "version": "1.0.1",
-    "title": "Global Visibility Card",
-    "subTitle": "Global visibility dashboard",
+    "name": "recordSummaryCard",
+    "version": "1.0.0",
+    "title": "Record Summary Card",
+    "subTitle": "Displays json data and broadcasts event",
     "metadata": {
         "pages": [
             "Dashboard"
@@ -11,8 +11,7 @@
         "publisher": "Fortinet",
         "description": "",
         "compatibility": [
-            "7.4.1"
+            "7.3.1"
         ]
-    },
-    "development": false
+    }
 }
