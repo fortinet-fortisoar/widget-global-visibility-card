@@ -34,8 +34,6 @@ If the broadcast event is turned on, the widget will then broadcast an event pas
 
     JSON Object which contains the data to be rendered:
 
-
-
     In this example the JSON has a key "data", "title" and value.
     
     "data" -  All the key, value pairs present in it would be rendered in the bottom section of the widget, 
@@ -47,11 +45,7 @@ If the broadcast event is turned on, the widget will then broadcast an event pas
     Record Summary Card
     ![Record Summary Tile](./allCards.png)
 
-    JSON, edit view and widget tile, when looked at simultaniously gives a clearer picture
-
-
-
-
+    JSON, edit view and widget, when looked at simultaniously gives a clearer picture
 
 | [Installation](./setup.md#installation) | [Configuration](./setup.md#configuration) |
 |-----------------------------------------|-------------------------------------------|
