@@ -15,7 +15,7 @@
     <div class="modal-body">
         <div class="form-group"
             data-ng-class="{ 'has-error': editRecordSummaryCard.title.$invalid && editRecordSummaryCard.title.$touched }">
-            <label for="title" class="control-label">Title<span class="text-danger">*</span></label> <input id="title"
+            <label for="title" class="control-label">Title</label> <input id="title"
                 name="title" type="text" data-ng-model="config.title" class="form-control" />
             <div data-cs-messages="editRecordSummaryCard.title"></div>
         </div>
@@ -30,7 +30,7 @@
                 <select name="customModule" id="customModule" class="form-control"
                     data-ng-options="module.type as module.name for module in jsonObjModuleList"
                     data-ng-model="config.customModule"
-                    data-ng-change="loadAttributesForCustomModule(config.customModule)" required>
+                    data-ng-change="loadAttributesForCustomModule()" required>
                     <option value="">Select an Option</option>
                 </select>
             </div>

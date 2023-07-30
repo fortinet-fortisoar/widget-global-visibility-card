@@ -47,6 +47,7 @@
           var data = pagedTotalData.fieldRows[i][_config.customModuleField].value;
           if (data) {
             if (_config.keyForCustomModule) {
+              // if the key is card.value.data, to get the value of 'data' splitting the key by . and looping over the keys
               var nestedKeysArray = _config.keyForCustomModule.split('.');
               nestedKeysArray.forEach(function (value) {
                 data = data[value];

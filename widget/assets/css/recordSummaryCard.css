@@ -45,12 +45,11 @@
 }
 .blue-line{
   /* Vector 41 */
-  
+  margin-top: 6px;
+  margin-bottom: 12px;
   width: 225px;
-  left: 745px;
-  top: 561px;
-  border: 1px solid #4EDCE6;
-  box-shadow: 0px 4px 4px rgba(24, 192, 203, 0.25);
+  border: 1px solid #294650;
+  box-shadow: -1px 1px 4px rgba(24, 192, 203, 0.25);
 }
 .node-details-style-dark{
   color: #C3C5C9;
@@ -59,4 +58,6 @@
   color: #151515;
 }
 
-  
+.record-card-title{
+  color: #ffffffeb; font-size: 22px !important;
+}
