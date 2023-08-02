@@ -10,6 +10,7 @@ This widget can also be used to *Broadcast* an event, can be enabled in advanced
 This widget can be used as representation of an individual record, if the filter criteria filters out multiple records, and the records contain data with the required format in the field then for each record a card will be formed.
 
 If the broadcast event is turned on, the widget will then broadcast an event passing on the record IRI(Id) to the listning widgets.
+The widgets listning to the on-click event should be present on the dashboard as this widget.
 
 ## Widget Preview and How to Use
 
@@ -39,6 +40,13 @@ If the broadcast event is turned on, the widget will then broadcast an event pas
     "data" -  All the key, value pairs present in it would be rendered in the bottom section of the widget, 
     
     "title" - Value in this key would be the title for the Tile
+
+#### Advanded Settings:
+    For this feature to work, user need to add a Widget with Listning capability in the same dashboard. eg. (Funnel Chart Widget).
+    Enable the Broadcast toggle, add an event name. Give the exact same event name in the listning widget, as given to the Record Summary Card widget for the feature to work seamlessly.
+
+    If the broadcast event is turned on, the widget will then broadcast an event passing on the record IRI(Id) to the listning widgets.
+
 
     In this example, the widget is configured as such that the filter condition meets 3 records. So 3 cards will be displayed on dashboard.
 

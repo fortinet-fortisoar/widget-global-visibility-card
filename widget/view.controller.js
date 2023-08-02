@@ -28,9 +28,14 @@
         for (var i = 0; i < backgroundColourElements.length; i++) {
           backgroundColourElements[i].setAttribute('class', 'global-card-light display-inline-block');
         }
+        var backgroundColourElements = document.getElementsByClassName("record-card-title-dark");
+        for (var i = 0; i < backgroundColourElements.length; i++) {
+          backgroundColourElements[i].setAttribute('class', 'record-card-title-light');
+        }
       }
       fetchJsonData();
     }
+
 
     function fetchJsonData() {
       var filters = {
@@ -66,6 +71,8 @@
 
       })
     }
+
+    
 
     function runCommand(value, index) {
       for (var i = 0; i < $scope.widgetData.length; i++) {

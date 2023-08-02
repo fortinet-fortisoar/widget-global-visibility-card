@@ -16,9 +16,9 @@
         </div>
     </div>
     <div data-ng-hide="collapsed">
-        <div id="globalCard-{{$index}}" class="global-card-dark display-inline-block" ng-repeat="item in widgetData"
+        <div id="globalCard-{{$index}}" class="global-card-dark display-inline-block" data-ng-class="{'pointer-event-none' : !config.broadcastEvent}" ng-repeat="item in widgetData"
             data-ng-click="runCommand(widgetData[$index]['@id'], $index)">
-            <span class="record-card-title">{{ item.title }}</span>
+            <span class="record-card-title-dark">{{ item.title }}</span>
             <div class="blue-line " style="height: 1px;"></div>
             <div ng-repeat="(key, value) in item.data">
                 <div id=" node-details"" class=" node-details-style-dark" style="font-size: 13px">
