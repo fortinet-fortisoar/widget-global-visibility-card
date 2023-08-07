@@ -30,7 +30,7 @@
                 <select name="customModule" id="customModule" class="form-control"
                     data-ng-options="module.type as module.name for module in jsonObjModuleList"
                     data-ng-model="config.customModule"
-                    data-ng-change="loadAttributesForCustomModule()" required>
+                    data-ng-change="loadAttributes()" required>
                     <option value="">Select an Option</option>
                 </select>
             </div>
@@ -65,9 +65,8 @@
                         data-form-name="'editRecordSummaryCard'">
                     </div>
                 </div>
-
             </div>
-            <div id='customModuleJsonValue' class="padding-bottom-lg">
+            <div id='customModuleJsonKey' class="padding-bottom-lg">
                 <label for="customModuleValue" class="control-label">Enter the key of object to be
                     rendered.</label>
                 <input name="customModuleValue" id="customModuleValue" type="text"
@@ -77,7 +76,7 @@
                 <div uib-accordion-group class="panel-default">
                     <uib-accordion-heading>
                         <div class="queue-card-header padding-left-md workspace-connector-metadata-container"
-                            ng-click="toggleArrow()" data-ng-class="{'queue-text-active-color': toggle">
+                            ng-click="toggleAdvancedSettings()" data-ng-class="{'queue-text-active-color': toggle">
                             <div class="margin-right-lg pull-left"><span class="queue-card-actions">&nbsp;<i
                                         class="fa {{ toggle ? 'fa-chevron-down' : 'fa-chevron-right'}}"></i></span>
                             </div>

@@ -17,9 +17,10 @@
         $scope.config = config;
         $scope.config.eventName = $scope.config.eventName ? $scope.config.eventName : "";
         $scope.config.broadcastEvent = $scope.config.broadcastEvent ? $scope.config.broadcastEvent : false;
-        $scope.loadAttributesForCustomModule = loadAttributesForCustomModule;
+        $scope.loadAttributes = loadAttributes;
+        // List of modules containing atleast one JSON field
         $scope.jsonObjModuleList = [];
-        $scope.toggleArrow = toggleArrow;
+        $scope.toggleAdvancedSettings = toggleAdvancedSettings;
 
         init();
         function init() {
@@ -39,14 +40,14 @@
             })
         }
         if ($scope.config.customModule) {
-            $scope.loadAttributesForCustomModule();
+            $scope.loadAttributes();
         }
 
-        function toggleArrow(){
+        function toggleAdvancedSettings(){
             $scope.toggle = $scope.toggle === undefined ? true : !$scope.toggle;
         }
 
-        function loadAttributesForCustomModule() {
+        function loadAttributes() {
             $scope.fields = [];
             $scope.fieldsArray = [];
             $scope.objectFields = [];

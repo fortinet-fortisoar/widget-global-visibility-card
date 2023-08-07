@@ -9,22 +9,20 @@
             data-ng-class="(page === 'dashboard' || page === 'reporting') ? 'widget-dashboard-title-width' : 'widget-title-width'">
             <h5 class="margin-top-0 margin-bottom-0 text-overflow ng-binding">{{ config.title }}</h5>
         </div>
-        <div class="padding-right-0 padding-left-0"
-            data-ng-class="(page === 'dashboard' || page === 'reporting') ? 'widget-dashboard-actions-width' : 'widget-actions-width'">
-            <span class="fa btn widget-action-icon btn-sm pull-right" data-ng-click="collapsed = !collapsed"
-                data-ng-class="{'fa-caret-up': !collapsed, 'fa-caret-down': collapsed}"></span>
-        </div>
     </div>
     <div data-ng-hide="collapsed">
-        <div id="globalCard-{{$index}}" class="global-card-dark display-inline-block" data-ng-class="{'pointer-event-none' : !config.broadcastEvent}" ng-repeat="item in widgetData"
+        <div id="globalCard-{{$index}}" class="global-card-dark display-inline-block"
+            data-ng-class="{'pointer-event-none' : !config.broadcastEvent}" ng-repeat="item in widgetData"
             data-ng-click="runCommand(widgetData[$index]['@id'], $index)">
             <span class="record-card-title-dark">{{ item.title }}</span>
             <div class="blue-line " style="height: 1px;"></div>
-            <div ng-repeat="(key, value) in item.data">
-                <div id=" node-details"" class=" node-details-style-dark" style="font-size: 13px">
-                    <div id="nodeStatus-{{key}}-{{$parent.$index}}" class="display-flex-space-between padding-sm">
-                        <div>{{key}}</div>
-                        <div>{{value}}</div>
+            <div class="attribute-scrollable" >
+                <div ng-repeat="(key, value) in item.data">
+                    <div id=" node-details"" class=" node-details-style-dark" style="font-size: 13px">
+                        <div id="nodeStatus-{{key}}-{{$parent.$index}}" class="display-flex-space-between padding-sm">
+                            <div>{{key}}</div>
+                            <div>{{value}}</div>
+                        </div>
                     </div>
                 </div>
             </div>

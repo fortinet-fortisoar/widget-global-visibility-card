@@ -15,6 +15,7 @@
     $scope.runCommand = runCommand;
     $scope.widgetData = [];
     var _config = $scope.config;
+
     __init()
     function __init() {
       $scope.currentTheme = $rootScope.theme.id;
@@ -44,7 +45,6 @@
       var pagedTotalData = new PagedCollection(_config.customModule, null, null);
       pagedTotalData.loadByPost(filters).then(function () {
         if (pagedTotalData.fieldRows.length === 0) {
-          $scope.filterValidation = true;
           return;
         }
         for (let i = 0; i < pagedTotalData.fieldRows.length; i++) {
@@ -63,7 +63,6 @@
               $scope.widgetData.push(data);
             }
             else {
-              $scope.filterValidation = true;
               return;
             }
           }
@@ -72,9 +71,10 @@
       })
     }
 
-    
-
     function runCommand(value, index) {
+      if (_config.broadcastEvent) {
+        $rootScope.$broadcast("widget:" + _config.eventName, value);
+      }
       for (var i = 0; i < $scope.widgetData.length; i++) {
         var element = document.getElementById("globalCard-" + i);
         if (i === index) {
@@ -83,9 +83,6 @@
         else {
           element.classList.remove("card-active");
         }
-      }
-      if (_config.broadcastEvent) {
-        $rootScope.$broadcast("widget:" + _config.eventName, value);
       }
     }
   }
