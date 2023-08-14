@@ -13,8 +13,8 @@
     <div data-ng-hide="collapsed">
         <div id="globalCard-{{$index}}" class="global-card-dark display-inline-block"
             data-ng-class="{'pointer-event-none' : !config.broadcastEvent}" ng-repeat="item in widgetData"
-            data-ng-click="runCommand(widgetData[$index]['@id'], $index)">
-            <span class="record-card-title-dark">{{ item.title }}</span>
+            data-ng-click="runCommand($index)">
+            <span id="record-title" class="record-card-title-dark">{{ item.title }}</span>
             <div class="blue-line " style="height: 1px;"></div>
             <div class="attribute-scrollable" >
                 <div ng-repeat="(key, value) in item.data">

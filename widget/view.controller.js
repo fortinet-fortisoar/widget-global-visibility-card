@@ -9,9 +9,9 @@
     .module('cybersponse')
     .controller('recordSummaryCard100Ctrl', recordSummaryCard100Ctrl);
 
-  recordSummaryCard100Ctrl.$inject = ['$scope', '$rootScope', 'PagedCollection'];
+  recordSummaryCard100Ctrl.$inject = ['$scope', '$rootScope', 'PagedCollection', '$timeout'];
 
-  function recordSummaryCard100Ctrl($scope, $rootScope, PagedCollection) {
+  function recordSummaryCard100Ctrl($scope, $rootScope, PagedCollection, $timeout) {
     $scope.runCommand = runCommand;
     $scope.widgetData = [];
     var _config = $scope.config;
@@ -22,7 +22,6 @@
       if ($scope.currentTheme === 'light') {
         var textElements = document.getElementsByClassName("node-details-style-dark");
         for (var i = 0; i < textElements.length; i++) {
-          // textElements[i].setAttribute('class', 'node-details-style-light');
           textElements[i].style.color = '#151515';
         }
         var backgroundColourElements = document.getElementsByClassName("global-card-dark display-inline-block");
@@ -67,13 +66,19 @@
             }
           }
         }
+        $timeout(function() {
+          if (_config.broadcastEvent && $scope.widgetData.length > 0) {
+            runCommand(0);
+          }
+        });
 
       })
     }
 
-    function runCommand(value, index) {
+    function runCommand(index) {
       if (_config.broadcastEvent) {
-        $rootScope.$broadcast("widget:" + _config.eventName, value);
+        $rootScope.$broadcast("widget:" + _config.eventName, $scope.widgetData[index]['@id']
+        );
       }
       for (var i = 0; i < $scope.widgetData.length; i++) {
         var element = document.getElementById("globalCard-" + i);

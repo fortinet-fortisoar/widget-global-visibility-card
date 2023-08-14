@@ -8,26 +8,26 @@
     <div class="modal-header">
         <h3 class="modal-title col-md-9">Record Summary Card Edit View</h3>
         <button type="button" class="close" data-ng-click="cancel()" data-dismiss="modal" aria-label="Close"
-            id="close-edit-widget-form-btn">
+            id="record-summary-card-close-edit-widget-form-btn">
             <div aria-hidden="true" class="version-button">+</div>
         </button>
     </div>
     <div class="modal-body">
         <div class="form-group"
             data-ng-class="{ 'has-error': editRecordSummaryCard.title.$invalid && editRecordSummaryCard.title.$touched }">
-            <label for="title" class="control-label">Title</label> <input id="title"
+            <label for="title" class="control-label">Title</label> <input id="record-summary-card-title"
                 name="title" type="text" data-ng-model="config.title" class="form-control" />
             <div data-cs-messages="editRecordSummaryCard.title"></div>
         </div>
         <div>
             <div class="form-group" data-ng-if="jsonObjModuleList"
                 data-ng-class="{ 'has-error': editRecordSummaryCard.customModule.$invalid && editRecordSummaryCard.customModule.$touched }">
-                <label for="customModule" class="control-label">Data Source
+                <label id="record-summary-card-data-source-module" for="customModule" class="control-label">Data Source
                     <span class="text-danger">*</span>
                 </label>
                 <span data-uib-tooltip="Select the Module which has JSON data" data-tooltip-append-to-body="true"><i
                         class="icon icon-information font-Size-13"></i></span>
-                <select name="customModule" id="customModule" class="form-control"
+                <select name="customModule" id="record-summary-card-customModule" class="form-control"
                     data-ng-options="module.type as module.name for module in jsonObjModuleList"
                     data-ng-model="config.customModule"
                     data-ng-change="loadAttributes()" required>
@@ -37,15 +37,15 @@
             <div class="form-group" data-ng-if="objectFields.length > 0">
 
 
-                <div id="customModuleField"
+                <div id="record-summary-card-customModuleField"
                     data-ng-class="{ 'has-error': editRecordSummaryCard.customModuleField.$invalid && editRecordSummaryCard.customModuleField.$touched }">
-                    <label class="control-label">Select Field
+                    <label id="record-summary-card-module-field" class="control-label">Select Field
                         <span class="text-danger">*</span>
                     </label>
                     <span
-                        data-uib-tooltip="Select the Field which has the data, only json type fields will be available in the dropdown"
+                        data-uib-tooltip="Select the Field which has the data. Only JSON type fields are available in the dropdown"
                         data-tooltip-append-to-body="true"><i class="icon icon-information font-Size-13"></i></span>
-                    <select class="form-control" name="customModuleField" id="customModuleField"
+                    <select class="form-control" name="customModuleField" id="record-summary-card-customModuleField"
                         data-ng-options="field.name as field.title for field in objectFields"
                         data-ng-model="config.customModuleField" required>
                         <option value="">Select an Option</option>
@@ -56,26 +56,29 @@
                         <span class="text-danger">*</span>
                     </label>
                     <span
-                        data-uib-tooltip="It is recommended to apply filter, that filters out 1 record, i.e. by a unique field"
-                        data-tooltip-append-to-body="true"><i class="icon icon-information font-Size-13"></i></span>
+                        data-uib-tooltip="It is recommended to apply filters that filter out relevant only."
+                        data-tooltip-append-to-body="true"><i class="icon icon-information font-Size-13"></i>
+                    </span>
                     <div data-cs-conditional data-ng-if="fieldsArray.length > 0" data-fields="$parent.fields"
                         data-reset-field="$parent.fields" data-mode="'queryFilters'"
                         data-ng-model="$parent.config.query" data-parent-form="editRecordSummaryCard"
                         data-enable-expression="(page==='dashboard' || page==='reporting')" data-show-uuid="true"
-                        data-form-name="'editRecordSummaryCard'">
+                        data>
                     </div>
                 </div>
-            </div>
             <div id='customModuleJsonKey' class="padding-bottom-lg">
-                <label for="customModuleValue" class="control-label">Enter the key of object to be
-                    rendered.</label>
-                <input name="customModuleValue" id="customModuleValue" type="text"
+                <label for="customModuleValue" class="control-label">Object key to render</label>
+                <span
+                data-uib-tooltip="Enter the object key whose value is to be rendered."
+                data-tooltip-append-to-body="true"><i class="icon icon-information font-Size-13"></i>
+                </span>
+                <input name="customModuleValue" id="record-summary-card-customModuleValue" type="text"
                     data-ng-model="config.keyForCustomModule" class="form-control" />
             </div>
             <uib-accordion>
                 <div uib-accordion-group class="panel-default">
                     <uib-accordion-heading>
-                        <div class="queue-card-header padding-left-md workspace-connector-metadata-container"
+                        <div class=""
                             ng-click="toggleAdvancedSettings()" data-ng-class="{'queue-text-active-color': toggle">
                             <div class="margin-right-lg pull-left"><span class="queue-card-actions">&nbsp;<i
                                         class="fa {{ toggle ? 'fa-chevron-down' : 'fa-chevron-right'}}"></i></span>
@@ -86,17 +89,17 @@
                         </div>
                     </uib-accordion-heading>
                     <div
-                        class="padding-left-lg padding-right-lg ">
+                        class="padding-left-lg">
                         <label for="broadcastEvent"
-                            class="font-size-12 mp-solutionpack-contents-card margin-top-md margin-right-md">Broadcast
+                            class="font-size-12 mp-solutionpack-contents-card margin-right-md">Broadcast
                             Event</label>
                         <span
                             data-uib-tooltip="Enable to broadcast an event, after enabling specify the event name foe the listener widget."
                             data-tooltip-append-to-body="true"><i class="icon icon-information font-size-12"></i></span>
                         <label class="switch switch-pill switch-label switch-success padding-top-md">
-                            <input type="checkbox" class="switch-input" name="IncludeAll" id="IncludeAll"
+                            <input type="checkbox" class="switch-input" name="IncludeAll" id="record-summary-card-IncludeAll"
                                 data-ng-model="config.broadcastEvent">
-                            <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
+                            <span id="record-summary-card-advanced-settings-toggle" class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
                         </label>
                         <div data-ng-if="config.broadcastEvent">
                             <div class="form-group"
@@ -107,7 +110,7 @@
                                     data-uib-tooltip="Enter name of event to broadcast, the listner widgets configured withe samilar event name will start listning to this widget."
                                     data-tooltip-append-to-body="true"><i
                                         class="icon icon-information font-Size-13"></i></span>
-                                <input id="eventName" name="eventName" type="text" data-ng-model="config.eventName"
+                                <input id="record-summary-card-eventName" name="eventName" type="text" data-ng-model="config.eventName"
                                     class="form-control" />
                                 <div data-cs-messages="editRecordSummaryCard.eventName"></div>
                             </div>
@@ -118,9 +121,9 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button id="edit-widget-save" type="submit" class="btn btn-sm btn-primary"><i
+        <button id="record-summary-card-edit-widget-save" type="submit" class="btn btn-sm btn-primary"><i
                 class="icon icon-check margin-right-sm"></i>Save</button>
-        <button id="edit-widget-cancel" type="button" class="btn btn-sm btn-default" data-ng-click="cancel()"><i
+        <button id="record-summary-card-edit-widget-cancel" type="button" class="btn btn-sm btn-default" data-ng-click="cancel()"><i
                 class="icon icon-close margin-right-sm"></i>Close</button>
     </div>
 </form>
