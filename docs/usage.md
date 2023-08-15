@@ -7,7 +7,8 @@ To use this widget users needs to provide a JSON in a certain format for the wid
 This JSON data must be in a field of a record in a module.
 This widget can also be used to *Broadcast* an event, can be enabled in advanced settings in widget configuration. 
 
-This widget can be used as representation of an individual record, if the filter criteria filters out multiple records, and the records contain data with the required format in the field then for each record a card will be formed.
+*This widget can be used as representation of an individual record, if the filter criteria filters out multiple records, and the records contain data with the required format in the field then for each record a card will be formed.*
+
 
 If the broadcast event is turned on, the widget will then broadcast an event passing on the record IRI(Id) to the listning widgets.
 The widgets listning to the on-click event should be present on the dashboard as this widget.

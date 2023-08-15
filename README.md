@@ -12,6 +12,7 @@
 
 
 ## Overview
+
 To use this widget users needs to provide a JSON in a certain format for the widget to render data.
 This JSON data must be in a field of a record in a module.
 This widget can also be used to *Broadcast* an event, can be enabled in advanced settings in widget configuration. 
