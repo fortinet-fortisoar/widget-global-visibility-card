@@ -1,0 +1,17 @@
+{
+    "name": "recordSummaryCard",
+    "version": "1.0.0",
+    "title": "Record Summary Card",
+    "subTitle": "Displays json data and broadcasts event",
+    "metadata": {
+        "pages": [
+            "Dashboard"
+        ],
+        "certified": "No",
+        "publisher": "Fortinet",
+        "description": "",
+        "compatibility": [
+            "7.3.1"
+        ]
+    }
+}
