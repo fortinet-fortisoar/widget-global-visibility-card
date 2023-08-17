@@ -3,13 +3,15 @@
     "version": "1.0.0",
     "title": "Record Summary Card",
     "subTitle": "Displays json data and broadcasts event",
+    "help_online": "https://github.com/fortinet-fortisoar/widget-record-summary-card/blob/release/1.0.0/README.md",
+    "published_date": 1692194643,
     "metadata": {
         "pages": [
             "Dashboard"
         ],
         "certified": "No",
         "publisher": "Fortinet",
-        "description": "",
+        "description": "This widget displays data in a card, also has capability to broadcast event.",
         "compatibility": [
             "7.3.1"
         ]
