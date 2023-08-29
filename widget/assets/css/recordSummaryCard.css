@@ -62,8 +62,10 @@
 }
 
 .attribute-scrollable {
-  max-height: 300px;
-  overflow: auto;
+  max-height: 225px;
+  overflow-y: auto;
+  z-index: 1;
+  position: relative;
 }
 
 .card-text {
@@ -71,7 +73,6 @@
 }
 
 .blue-line {
-  /* Vector 41 */
   margin-top: 12px;
   margin-bottom: 12px;
   width: 225px;
