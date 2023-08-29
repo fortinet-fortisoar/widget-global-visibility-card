@@ -33,13 +33,11 @@
   backdrop-filter: blur(25px);
   border-radius: 4px;
   background: linear-gradient(to bottom left, #edf9ff, #f8f3ff);
-  /* background-image: linear-gradient(to bottom left, #edf9ff, #f8f3ff); */
   transition: 0.3s;
-  /* border-image: linear-gradient(307deg, #0CD9E7, rgb(255 255 255 / 0%), #2C34F8) 1; */
 }
 
 .global-card-light::before {
-  background: linear-gradient(307deg, #0CD9E7, rgb(255 255 255 / 0%), #2C34F8) 1;
+  background: linear-gradient(307deg, #0CD9E7, rgb(255 255 255 / 0%), #2C34F8) border-box;
   border: 1px solid transparent;
   -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -64,8 +62,10 @@
 }
 
 .attribute-scrollable {
-  max-height: 300px;
-  overflow: auto;
+  max-height: 225px;
+  overflow-y: auto;
+  z-index: 1;
+  position: relative;
 }
 
 .card-text {
@@ -73,7 +73,6 @@
 }
 
 .blue-line {
-  /* Vector 41 */
   margin-top: 12px;
   margin-bottom: 12px;
   width: 225px;

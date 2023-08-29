@@ -55,14 +55,14 @@
               var nestedKeysArray = _config.keyForCustomModule.split('.');
               nestedKeysArray.forEach(function (value) {
                 data = data[value];
+                if(data === undefined){
+                  return;
+                }
               })
             }
             if (data != undefined && data.hasOwnProperty('data')) {
               data['@id'] = pagedTotalData.fieldRows[i]['@id'].value;
               $scope.widgetData.push(data);
-            }
-            else {
-              return;
             }
           }
         }
