@@ -72,14 +72,16 @@ The widgets listening to the on-click event should be present on the dashboard a
     <tbody>
         <td>Consider the following JSON data in one of the record's JSON field:
             <pre>"recordSummaryCard": {
-      "data": {
-        "MTTD": "1 min",
-        "MTTR": "2 mins",
-        "Node Status": "Active",
-        "Active Incidents": 0
-      },
-      "title": "Australia"
-    }</pre>
+            "data": {
+            "ROI":"$37,707",
+            "MTTD": "1 min",
+            "MTTR": "2 mins",
+            "Node Status": "Active",
+            "Total Tenants":5,
+            "Active Incidents": 8
+            },
+            "title": "Australia"
+          }</pre>
             <p>The following screenshot shows the Record Summary Card in action with this JSON data.</p>
             <p><img src="./res/australiaCard.png" alt="Record Summary Tile"></p>
             <p>Consider the following JSON data in each of the record's JSON field:</p>
