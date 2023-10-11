@@ -70,7 +70,7 @@
             }
             else{
               $scope.filterValidation = true;
-              $scope.errorMessage = "Invalid JSON for Widget";
+              $scope.errorMessage = " Incorrect JSON";
               return;
             }
           }
