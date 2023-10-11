@@ -15,6 +15,8 @@
     $scope.runCommand = runCommand;
     $scope.widgetData = [];
     var _config = $scope.config;
+    $scope.filterValidation = false;
+    $scope.errorMessage = "";
 
     __init()
     function __init() {
@@ -56,6 +58,8 @@
               nestedKeysArray.forEach(function (value) {
                 data = data[value];
                 if(data === undefined){
+                  $scope.filterValidation = true;
+                  $scope.errorMessage = "Undefined";
                   return;
                 }
               })
@@ -63,6 +67,11 @@
             if (data != undefined && data.hasOwnProperty('data')) {
               data['@id'] = pagedTotalData.fieldRows[i]['@id'].value;
               $scope.widgetData.push(data);
+            }
+            else{
+              $scope.filterValidation = true;
+              $scope.errorMessage = " Incorrect JSON";
+              return;
             }
           }
         }
