@@ -1,0 +1,34 @@
+<!-- Copyright start
+  Copyright (C) 2008 - 2023 Fortinet Inc.
+  All rights reserved.
+  FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
+  Copyright end -->
+<div class="widget widget-container chart">
+    <div class="display-flex-space-between margin-chart">
+        <div class="padding-right-0 padding-left-0 widget-dashboard-title-width"
+            data-ng-class="(page === 'dashboard' || page === 'reporting') ? 'widget-dashboard-title-width' : 'widget-title-width'">
+            <h5 class="margin-top-0 margin-bottom-0 text-overflow ng-binding">{{ config.title }}</h5>
+        </div>
+    </div>
+    <div data-ng-hide="collapsed">
+        <div id="globalCard-{{$index}}" class="global-card-dark display-inline-block"
+            data-ng-class="{'pointer-event-none' : !config.broadcastEvent}" ng-repeat="item in widgetData"
+            data-ng-click="runCommand($index)">
+            <span id="record-title" class="record-card-title-dark">{{ item.title }}</span>
+            <div class="blue-line " style="height: 1px;"></div>
+            <div class="attribute-scrollable" >
+                <div ng-repeat="(key, value) in item.data">
+                    <div id=" node-details"" class=" node-details-style-dark" style="font-size: 13px">
+                        <div id="nodeStatus-{{key}}-{{$parent.$index}}" class="display-flex-space-between padding-sm">
+                            <div>{{key}}</div>
+                            <div>{{value}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="filterValidation" class="chart-message">
+            <h6 class="text-center padding-top-md padding-bottom-md font200 font-size-15">Error: {{errorMessage}}.</h6>
+        </div>
+    </div>
+</div>

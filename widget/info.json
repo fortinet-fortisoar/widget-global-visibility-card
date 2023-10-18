@@ -1,0 +1,20 @@
+{
+    "name": "recordSummaryCard",
+    "version": "1.0.0",
+    "title": "Record Summary Card", 
+    "subTitle": "The Record Summary Card visually presents JSON data within a card and broadcasts information as an event in a format compatible with other dashboard widgets.",
+    "published_date": 1692194643,
+    "metadata": {
+        "pages": [
+            "Dashboard"
+        ],
+        "help_online": "https://github.com/fortinet-fortisoar/widget-record-summary-card/blob/release/1.0.0/README.md",
+        "certified": "No",
+        "publisher": "Fortinet",
+        "snapshots": ["https://repo.fortisoar.fortinet.com/fsr-widgets/recordSummaryCard-1.0.0/images/recordSummaryCard.png"],
+        "description": "The Record Summary Card visually organizes JSON data in card form, aiding data interpretation. The widget also facilitates event broadcasting exclusively among widgets on the same dashboard, enhancing seamless information sharing and user experience.",
+        "compatibility": [
+            "7.3.1"
+        ]
+    }
+}

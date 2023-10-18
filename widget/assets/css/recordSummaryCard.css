@@ -1,0 +1,98 @@
+/* Group 3847 */
+
+
+.global-card-dark {
+  height: 300px;
+  width: 250px;
+  margin: 10px;
+  padding: 10px;
+  backdrop-filter: blur(25px);
+  background: #131922;
+  transition: 0.3s;
+  border-radius: 4px;
+  position: relative;
+}
+
+.global-card-dark::before {
+  background: linear-gradient(307deg, #0cd9e7a3, rgb(255 255 255 / 0%), #2c34f8b5) border-box;
+  border: 1px solid transparent;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+}
+
+.global-card-light {
+  height: 300px;
+  width: 250px;
+  margin: 10px;
+  padding: 10px;
+  backdrop-filter: blur(25px);
+  border-radius: 4px;
+  background: linear-gradient(to bottom left, #edf9ff, #f8f3ff);
+  transition: 0.3s;
+}
+
+.global-card-light::before {
+  background: linear-gradient(307deg, #0CD9E7, rgb(255 255 255 / 0%), #2C34F8) border-box;
+  border: 1px solid transparent;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+}
+
+.card-active {
+  border: 1px solid #4EDCE6;
+  transform: scale(1.05);
+}
+
+.global-card-light:hover {
+  transform: scale(1.05);
+}
+
+.global-card-dark:hover {
+  transform: scale(1.05);
+}
+
+.attribute-scrollable {
+  height: 225px;
+  overflow-y: auto;
+  z-index: 1;
+  position: relative;
+}
+
+.card-text {
+  font-size: 12px;
+}
+
+.blue-line {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  width: 225px;
+  border: 1px solid #294650;
+}
+
+.node-details-style-dark {
+  color: #C3C5C9;
+}
+
+.node-details-style-light {
+  color: #151515;
+}
+
+.record-card-title-dark {
+  color: #ffffffeb;
+  font-size: 22px !important;
+}
+
+.record-card-title-light {
+  color: #000000eb;
+  font-size: 22px !important;
+}

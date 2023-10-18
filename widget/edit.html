@@ -1,0 +1,129 @@
+<!-- Copyright start
+  Copyright (C) 2008 - 2023 Fortinet Inc.
+  All rights reserved.
+  FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
+  Copyright end -->
+<form data-ng-submit="save()" class="noMargin" name="editRecordSummaryCard" data-ng-class="{'state-wait': processing }"
+    novalidate>
+    <div class="modal-header">
+        <h3 class="modal-title col-md-9">Record Summary Card Edit View</h3>
+        <button type="button" class="close" data-ng-click="cancel()" data-dismiss="modal" aria-label="Close"
+            id="record-summary-card-close-edit-widget-form-btn">
+            <div aria-hidden="true" class="version-button">+</div>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group"
+            data-ng-class="{ 'has-error': editRecordSummaryCard.title.$invalid && editRecordSummaryCard.title.$touched }">
+            <label for="title" class="control-label">Title</label> <input id="record-summary-card-title"
+                name="title" type="text" data-ng-model="config.title" class="form-control" />
+            <div data-cs-messages="editRecordSummaryCard.title"></div>
+        </div>
+        <div>
+            <div class="form-group" data-ng-if="jsonObjModuleList"
+                data-ng-class="{ 'has-error': editRecordSummaryCard.customModule.$invalid && editRecordSummaryCard.customModule.$touched }">
+                <label id="record-summary-card-data-source-module" for="customModule" class="control-label">Data Source
+                    <span class="text-danger">*</span>
+                </label>
+                <span data-uib-tooltip="Select the Module which has JSON data" data-tooltip-append-to-body="true"><i
+                        class="icon icon-information font-Size-13"></i></span>
+                <select name="customModule" id="record-summary-card-customModule" class="form-control"
+                    data-ng-options="module.type as module.name for module in jsonObjModuleList"
+                    data-ng-model="config.customModule"
+                    data-ng-change="loadAttributes()" required>
+                    <option value="">Select an Option</option>
+                </select>
+            </div>
+            <div class="form-group" data-ng-if="objectFields.length > 0">
+
+
+                <div id="record-summary-card-customModuleField"
+                    data-ng-class="{ 'has-error': editRecordSummaryCard.customModuleField.$invalid && editRecordSummaryCard.customModuleField.$touched }">
+                    <label id="record-summary-card-module-field" class="control-label">Select Field
+                        <span class="text-danger">*</span>
+                    </label>
+                    <span
+                        data-uib-tooltip="Select the Field which has the data. Only JSON type fields are available in the dropdown"
+                        data-tooltip-append-to-body="true"><i class="icon icon-information font-Size-13"></i></span>
+                    <select class="form-control" name="customModuleField" id="record-summary-card-customModuleField"
+                        data-ng-options="field.name as field.title for field in objectFields"
+                        data-ng-model="config.customModuleField" required>
+                        <option value="">Select an Option</option>
+                    </select>
+                </div>
+                <div class="margin-top-md margin-bottom-md">
+                    <label class="control-label">Filter Record Which Contains The JSON Data
+                        <span class="text-danger">*</span>
+                    </label>
+                    <span
+                        data-uib-tooltip="It is recommended to apply filters that filter out relevant only."
+                        data-tooltip-append-to-body="true"><i class="icon icon-information font-Size-13"></i>
+                    </span>
+                    <div data-cs-conditional data-ng-if="fieldsArray.length > 0" data-fields="$parent.fields"
+                        data-reset-field="$parent.fields" data-mode="'queryFilters'"
+                        data-ng-model="$parent.config.query" data-parent-form="editRecordSummaryCard"
+                        data-enable-expression="(page==='dashboard' || page==='reporting')" data-show-uuid="true"
+                        data>
+                    </div>
+                </div>
+            <div id='customModuleJsonKey' class="padding-bottom-lg">
+                <label for="customModuleValue" class="control-label">Object key to render</label>
+                <span
+                data-uib-tooltip="Enter the object key whose value is to be rendered."
+                data-tooltip-append-to-body="true"><i class="icon icon-information font-Size-13"></i>
+                </span>
+                <input name="customModuleValue" id="record-summary-card-customModuleValue" type="text"
+                    data-ng-model="config.keyForCustomModule" class="form-control" />
+            </div>
+            <uib-accordion>
+                <div uib-accordion-group class="panel-default">
+                    <uib-accordion-heading>
+                        <div class=""
+                            ng-click="toggleAdvancedSettings()" data-ng-class="{'queue-text-active-color': toggle}">
+                            <div class="margin-right-lg pull-left"><span class="queue-card-actions">&nbsp;<i
+                                        class="fa {{ toggle ? 'fa-chevron-down' : 'fa-chevron-right'}}"></i></span>
+                            </div>
+                            <div class="pull-left queue-card-header-text margin-right-3">Advanced Settings
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </uib-accordion-heading>
+                    <div
+                        class="padding-left-lg">
+                        <label for="broadcastEvent"
+                            class="font-size-12 mp-solutionpack-contents-card margin-right-md">Broadcast
+                            Event</label>
+                        <span
+                            data-uib-tooltip="Enable to broadcast an event, after enabling specify the event name foe the listener widget."
+                            data-tooltip-append-to-body="true"><i class="icon icon-information font-size-12"></i></span>
+                        <label class="switch switch-pill switch-label switch-success padding-top-md">
+                            <input type="checkbox" class="switch-input" name="IncludeAll" id="record-summary-card-IncludeAll"
+                                data-ng-model="config.broadcastEvent">
+                            <span id="record-summary-card-advanced-settings-toggle" class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
+                        </label>
+                        <div data-ng-if="config.broadcastEvent">
+                            <div class="form-group"
+                                data-ng-class="{ 'has-error': editRecordSummaryCard.eventName.$invalid && editRecordSummaryCard.eventName.$touched }">
+                                <label for="eventName" class="control-label">Event Name<span
+                                        class="text-danger">*</span></label>
+                                <span
+                                    data-uib-tooltip="Enter name of event to broadcast, the listner widgets configured withe samilar event name will start listning to this widget."
+                                    data-tooltip-append-to-body="true"><i
+                                        class="icon icon-information font-Size-13"></i></span>
+                                <input id="record-summary-card-eventName" name="eventName" type="text" data-ng-model="config.eventName"
+                                    class="form-control" />
+                                <div data-cs-messages="editRecordSummaryCard.eventName"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </uib-accordion>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button id="record-summary-card-edit-widget-save" type="submit" class="btn btn-sm btn-primary"><i
+                class="icon icon-check margin-right-sm"></i>Save</button>
+        <button id="record-summary-card-edit-widget-cancel" type="button" class="btn btn-sm btn-default" data-ng-click="cancel()"><i
+                class="icon icon-close margin-right-sm"></i>Close</button>
+    </div>
+</form>
